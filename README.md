@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## A Kanban app made with
 
-## Getting Started
+_React, NextJS, TypeScript, Shadcn, Tailwind, CockroachDB, Prisma_
 
-First, run the development server:
+Getting Started:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+After cloning this repository, in the project folder we need to install the dependencies. Use the command:
+`npm i`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Now for running the project, if you installed the dependencies using yarn, run:
+`npm run dev`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## The challenge
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Users should be able to:**
 
-## Learn More
+- [ ] View the optimal layout for the app depending on their device's screen size
+- [ ] See hover states for all interactive elements on the page
+- [ ] Create, read, update, and delete boards and tasks
+- [ ] Receive form validations when trying to create/edit boards and tasks
+- [ ] Mark subtasks as complete and move tasks between columns
+- [ ] Hide/show the board sidebar
+- [ ] Keep track of any changes, even after refreshing the browser
 
-To learn more about Next.js, take a look at the following resources:
+**_Nice to have_**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ ] Toggle the theme between light/dark modes
+- [ ] Allow users to drag and drop tasks to change their status and re- [ ]order them in a column
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Expected Behaviour
 
-## Deploy on Vercel
+**Boards**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Clicking different boards in the sidebar will change to the selected board.
+- [ ] Clicking "Create New Board" opens the "Add New Board" modal.
+- [ ] Clicking in the dropdown menu "Edit Board" opens up the "Edit Board" modal where details can be changed.
+- [ ] Columns are added and removed for the Add/Edit Board modals.
+- [ ] Deleting a board deletes all columns and tasks and requires confirmation.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Columns**
+
+- [ ] A board needs at least one column before tasks can be added.
+- [ ] Clicking "Add New Column" opens the "Edit Board" modal where columns are added.
+
+**Tasks**
+
+- [ ] Adding a new task adds it to the bottom of the relevant column.
+- [ ] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
