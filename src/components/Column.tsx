@@ -9,11 +9,13 @@ import {
   DragOverlay,
   KeyboardSensor,
   PointerSensor,
+  useDroppable,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
 import {
   arrayMove,
+  rectSortingStrategy,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
@@ -32,46 +34,15 @@ import { useState } from "react";
 //   );
 // }
 
-export function Column({ column, tasks, setTasks }) {
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
-  const ids = tasks.filter((t) => t.id);
+export function Column({column})) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>{column}</CardTitle>
       </CardHeader>
       <ScrollArea>
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
-        >
-          <SortableContext items={ids} strategy={verticalListSortingStrategy}>
-            {tasks.map((task: any) => {
-              return <TaskCard task={task} key={task.id} />;
-            })}
-          </SortableContext>
-        </DndContext>
         <ScrollBar orientation="vertical" />
       </ScrollArea>
     </Card>
   );
-
-  function handleDragEnd(event) {
-    const { active, over } = event;
-
-    if (active.id !== over.id) {
-      setTasks((tasks) => {
-        const oldIndex = tasks.findIndex((task) => task.id === active.id);
-        const newIndex = tasks.findIndex((task) => task.id === over.id);
-        console.log(tasks);
-        return arrayMove(tasks, oldIndex, newIndex);
-      });
-    }
-  }
 }

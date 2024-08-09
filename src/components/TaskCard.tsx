@@ -13,9 +13,9 @@ import { CSS } from "@dnd-kit/utilities";
 import Grab from "@/assets/icon-grab.svg";
 import Image from "next/image";
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ id }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: task.id });
+    useSortable({ id: id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -32,7 +32,7 @@ export default function TaskCard({ task }) {
         >
           <Image alt="grab icon " src={Grab} />
         </CardHeader>
-        <CardContent>{task.content}</CardContent>
+        <CardContent>{id}</CardContent>
       </Card>
     </div>
   );
