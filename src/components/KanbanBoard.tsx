@@ -4,7 +4,7 @@ import { Column } from "./Column";
 export default function KanbanBoard() {
   const [tasks, setTasks] = useState([
     {
-      id: "a 1",
+      id: "1",
       columnId: "done",
       content: "Project initiation and planning",
     },

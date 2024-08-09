@@ -23,9 +23,13 @@ export default function TaskCard({ task }) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Card>
-        <CardHeader className="bg-gray-100 h-2.5 w-150">
+    <div>
+      <Card ref={setNodeRef} style={style}>
+        <CardHeader
+          className="bg-gray-100 h-2.5 w-150"
+          {...attributes}
+          {...listeners}
+        >
           <Image alt="grab icon " src={Grab} />
         </CardHeader>
         <CardContent>{task.content}</CardContent>
