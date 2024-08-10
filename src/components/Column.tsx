@@ -58,7 +58,7 @@ export function Column(props) {
           <SortableContext
             id={props.id}
             items={ids}
-            strategy={rectSortingStrategy}
+            strategy={verticalListSortingStrategy}
           >
             <div ref={setNodeRef} className="h-[75vh]">
               {props.column.tasks.map((task) => (

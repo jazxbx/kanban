@@ -25,6 +25,7 @@ import { Column } from "./Column";
 import { Tiro_Devanagari_Sanskrit } from "next/font/google";
 
 export default function KanbanBoard() {
+  const [activeId, setActiveId] = useState(null);
   const [items, setItems] = useState([
     {
       name: "todo",
@@ -224,7 +225,7 @@ export default function KanbanBoard() {
       );
       temp[targetColumnIndex].tasks.splice(targetItemIndex, 0, removed[0]);
 
-      return setItems(temp);
+      setItems(temp);
     } else if (active.id !== over.id) {
       const temp = [...items];
       const currentColumnIndex = temp.findIndex(
@@ -241,7 +242,22 @@ export default function KanbanBoard() {
         currentItemIndex,
         targetItemIndex
       );
-      return setItems(temp);
+      setItems(temp);
+    }
+    setActiveId(null);
+  }
+
+  function handleDragStart(event) {
+    setActiveId(event.active.id);
+  }
+
+  function findTask(activeId) {
+    for (let column of items) {
+      for (let task of column.tasks) {
+        if (task.id === activeId) {
+          return task;
+        }
+      }
     }
   }
 
@@ -257,11 +273,17 @@ export default function KanbanBoard() {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
         {items.map((item) => (
           <Column id={item.id} key={item.id} column={item} items={items} />
         ))}
+        <DragOverlay>
+          {activeId ? (
+            <TaskCard id={activeId} task={findTask(activeId)} />
+          ) : null}
+        </DragOverlay>
       </DndContext>
     </div>
   );
