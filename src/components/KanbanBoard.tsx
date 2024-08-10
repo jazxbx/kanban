@@ -171,8 +171,6 @@ export default function KanbanBoard() {
     const { active, over } = event;
     let currentColumn = active.id;
     let targetColumn = over.id;
-    const overData = over;
-    console.log(overData);
 
     for (let column of items) {
       for (let task of column.tasks) {
@@ -205,27 +203,27 @@ export default function KanbanBoard() {
       const currentItemIndex = temp[currentColumnIndex].tasks.findIndex(
         (task) => task.id === active.id
       );
+      // logic for empty column where insertion is via push()
       if (over.data.current === undefined) {
-        console.log(targetColumnIndex);
         const removed = temp[currentColumnIndex].tasks.splice(
           currentItemIndex,
           1
         );
         temp[targetColumnIndex].tasks.push(...removed);
-        return setItems(temp);
-      }
-      const targetItemIndex = temp[targetColumnIndex].tasks.findIndex(
-        (task) => task.id === over.id
-      );
-      // logic for empty column where insertion is via push()
-      // splice out from one column and add to another
-      const removed = temp[currentColumnIndex].tasks.splice(
-        currentItemIndex,
-        1
-      );
-      temp[targetColumnIndex].tasks.splice(targetItemIndex, 0, removed[0]);
+        setItems(temp);
+      } else {
+        // splice out from one column and add to another
+        const targetItemIndex = temp[targetColumnIndex].tasks.findIndex(
+          (task) => task.id === over.id
+        );
+        const removed = temp[currentColumnIndex].tasks.splice(
+          currentItemIndex,
+          1
+        );
+        temp[targetColumnIndex].tasks.splice(targetItemIndex, 0, removed[0]);
 
-      setItems(temp);
+        setItems(temp);
+      }
     } else if (active.id !== over.id) {
       const temp = [...items];
       const currentColumnIndex = temp.findIndex(
