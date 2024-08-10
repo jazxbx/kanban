@@ -278,7 +278,7 @@ export default function KanbanBoard() {
           <Column id={item.id} key={item.id} column={item} items={items} />
         ))}
         <DragOverlay>
-          {activeId ? (
+          {activeId !== null ? (
             <TaskCard id={activeId} task={findTask(activeId)} />
           ) : null}
         </DragOverlay>
