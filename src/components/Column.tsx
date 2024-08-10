@@ -55,11 +55,7 @@ export function Column(props) {
           ref={setNodeRef}
           className="h-[75vh] w-[350px] rounded-md border "
         >
-          <SortableContext
-            id={props.id}
-            items={ids}
-            strategy={verticalListSortingStrategy}
-          >
+          <SortableContext items={ids} strategy={verticalListSortingStrategy}>
             <div ref={setNodeRef} className="h-[75vh]">
               {props.column.tasks.map((task) => (
                 <TaskCard task={task} id={task.id} key={task.id} />
