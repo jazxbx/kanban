@@ -127,7 +127,11 @@ export default function KanbanBoard() {
                       return item.columnId === col;
                     })
                     .map((item) => (
-                      <TaskCard id={item.id} key={item.id} />
+                      <TaskCard
+                        content={item.content}
+                        id={item.id}
+                        key={item.id}
+                      />
                     ))}
                   <ScrollBar orientation="vertical" />
                 </ScrollArea>
@@ -156,6 +160,8 @@ export default function KanbanBoard() {
         const newIndex = items.findIndex((item) => item.id === over.id);
         if (activeItem.columnId !== overItem.columnId) {
           temp[oldIndex].columnId = temp[newIndex].columnId;
+
+          return arrayMove(temp, oldIndex, temp.length - 1);
         }
         return arrayMove(temp, oldIndex, newIndex);
       });
