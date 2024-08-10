@@ -32,7 +32,7 @@ export default function TaskCard(props) {
   };
 
   return (
-    <Card key={props.id} ref={setNodeRef} style={style}>
+    <Card ref={setNodeRef} style={style}>
       <CardHeader className="bg-gray-100" {...attributes} {...listeners}>
         <Image alt="grab icon " src={Grab} />
       </CardHeader>

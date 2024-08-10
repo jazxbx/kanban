@@ -46,7 +46,7 @@ export function Column(props) {
     return temp;
   }, [props.tasks]);
   return (
-    <Card key={props.id} className="h-76vh w-fit">
+    <Card className="h-76vh w-fit">
       <CardHeader>
         <CardTitle>{props.column.name}</CardTitle>
       </CardHeader>
@@ -62,7 +62,7 @@ export function Column(props) {
           >
             <div ref={setNodeRef} className="h-[75vh]">
               {props.column.tasks.map((task) => (
-                <TaskCard task={task} key={task.id} id={task.id} />
+                <TaskCard task={task} id={task.id} key={task.id} />
               ))}
             </div>
           </SortableContext>
