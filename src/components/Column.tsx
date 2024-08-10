@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 import TaskCard from "./TaskCard";
@@ -18,6 +18,7 @@ import {
   rectSortingStrategy,
   SortableContext,
   sortableKeyboardCoordinates,
+  useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
@@ -32,17 +33,42 @@ import { useState } from "react";
 //       <ScrollBar orientation="horizontal" />
 //     </ScrollArea>
 //   );
-// }
 
-export function Column({column})) {
+export function Column(props) {
+  const { setNodeRef } = useDroppable({
+    id: props.id,
+  });
+  const ids = useMemo(() => {
+    const temp = [];
+    props.items.forEach((column) =>
+      column.tasks.forEach((task) => temp.push(task.id))
+    );
+    return temp;
+  }, [props.tasks]);
   return (
-    <Card>
+    <Card className="h-76vh w-fit">
       <CardHeader>
-        <CardTitle>{column}</CardTitle>
+        <CardTitle>{props.column.name}</CardTitle>
       </CardHeader>
-      <ScrollArea>
-        <ScrollBar orientation="vertical" />
-      </ScrollArea>
+      <CardContent>
+        <ScrollArea
+          ref={setNodeRef}
+          className="h-[75vh] w-[350px] rounded-md border "
+        >
+          <SortableContext
+            id={props.id}
+            items={ids}
+            strategy={rectSortingStrategy}
+          >
+            <div ref={setNodeRef} className="h-[75vh]">
+              {props.column.tasks.map((task) => (
+                <TaskCard task={task} key={task.id} id={task.id} />
+              ))}
+            </div>
+          </SortableContext>
+          <ScrollBar orientation="vertical" />
+        </ScrollArea>
+      </CardContent>
     </Card>
   );
 }
