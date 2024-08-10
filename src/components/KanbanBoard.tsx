@@ -23,6 +23,7 @@ import {
 } from "@dnd-kit/sortable";
 import { Column } from "./Column";
 import { Tiro_Devanagari_Sanskrit } from "next/font/google";
+import CosmeticTaskCard from "./CosmeticTaskCard";
 
 export default function KanbanBoard() {
   const [activeId, setActiveId] = useState(null);
@@ -279,7 +280,7 @@ export default function KanbanBoard() {
         ))}
         <DragOverlay>
           {activeId !== null ? (
-            <TaskCard id={activeId} task={findTask(activeId)} />
+            <CosmeticTaskCard id={activeId} task={findTask(activeId)} />
           ) : null}
         </DragOverlay>
       </DndContext>
