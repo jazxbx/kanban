@@ -46,7 +46,7 @@ export function Column(props) {
     return temp;
   }, [props.tasks]);
   return (
-    <Card className="h-76vh w-fit">
+    <Card key={props.id} className="h-76vh w-fit">
       <CardHeader>
         <CardTitle>{props.column.name}</CardTitle>
       </CardHeader>
