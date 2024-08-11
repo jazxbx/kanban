@@ -1,28 +1,30 @@
 import React, { useMemo, useState } from "react";
 
-import TaskCard from "./TaskCard";
-import { Card, CardHeader, CardTitle } from "./ui/card";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { ScrollBar } from "./ui/scroll-area";
+import {
+  restrictToVerticalAxis,
+  restrictToWindowEdges,
+} from "@dnd-kit/modifiers";
 
 import {
   DndContext,
   closestCenter,
+  LayoutMeasuringStrategy,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
   DragOverlay,
   closestCorners,
+  MeasuringStrategy,
 } from "@dnd-kit/core";
 import {
   arrayMove,
+  rectSortingStrategy,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Column } from "./Column";
-import { Tiro_Devanagari_Sanskrit } from "next/font/google";
 import CosmeticTaskCard from "./CosmeticTaskCard";
 
 export default function KanbanBoard() {
@@ -30,131 +32,131 @@ export default function KanbanBoard() {
   const [items, setItems] = useState([
     {
       name: "todo",
-      id: 100,
+      id: "360d11ac",
       tasks: [
         {
           name: "ImplementLoginFeature",
-          id: 1,
+          id: "8e31fc82",
         },
         {
           name: "SetupDatabaseSchema",
-          id: 2,
+          id: "9e28a0e5",
         },
         {
           name: "CreateUserInterfaceMockups",
-          id: 5,
+          id: "6b68b752",
         },
         {
           name: "ConfigureCI/CDPipeline",
-          id: 6,
+          id: "68854bd1",
         },
         {
           name: "WriteUnitTestsForAPI",
-          id: 7,
+          id: "5651d51d",
         },
       ],
     },
     {
       name: "doing",
-      id: 200,
+      id: "4ec5e4f5",
       tasks: [
         {
           name: "RefactorAuthenticationModule",
-          id: 3,
+          id: "daffddfb",
         },
         {
           name: "OptimizeSQLQueries",
-          id: 4,
+          id: "eaca1174",
         },
         {
           name: "IntegrateOAuth2.0",
-          id: 8,
+          id: "832a9dc9",
         },
         {
           name: "DevelopRESTfulEndpoints",
-          id: 9,
+          id: "86fd8938",
         },
         {
           name: "ImplementErrorHandling",
-          id: 10,
+          id: "2af1e579",
         },
       ],
     },
     {
       name: "review",
-      id: 300,
+      id: "39c647f0",
       tasks: [
         {
           name: "CodeReviewFeatureX",
-          id: 11,
+          id: "d6f8a1e9",
         },
         {
           name: "TestAPIEndpoints",
-          id: 12,
+          id: "3d866750",
         },
         {
           name: "ReviewDatabaseMigrations",
-          id: 13,
+          id: "233eb965",
         },
         {
           name: "CheckCrossBrowserCompatibility",
-          id: 14,
+          id: "c5b49a44",
         },
         {
           name: "AnalyzePerformanceMetrics",
-          id: 15,
+          id: "6f6ef78c",
         },
       ],
     },
     {
       name: "done",
-      id: 400,
+      id: "13a35ce3",
       tasks: [
         {
           name: "DeployToStagingEnvironment",
-          id: 16,
+          id: "4b040a5e",
         },
         {
           name: "FixCriticalBugInProduction",
-          id: 17,
+          id: "3cbdbddd",
         },
         {
           name: "CompleteCodeRefactoring",
-          id: 18,
+          id: "60d18e1b",
         },
         {
           name: "DocumentAPIEndpoints",
-          id: 19,
+          id: "6bcaf70b",
         },
         {
           name: "MergePullRequest",
-          id: 20,
+          id: "a6a4d9ee",
         },
       ],
     },
     {
       name: "backlog",
-      id: 500,
+      id: "7847dad3",
       tasks: [
         {
           name: "ResearchNewFramework",
-          id: 21,
+          id: "bbef7c0f",
         },
         {
           name: "PlanFeatureYDevelopment",
-          id: 22,
+          id: "b8571f19",
         },
         {
           name: "SetUpLoadTesting",
-          id: 23,
+          id: "b3b05a15",
         },
         {
           name: "DesignDatabaseScalingStrategy",
-          id: 24,
+          id: "b1a949fb",
         },
         {
           name: "InvestigateMemoryLeak",
-          id: 25,
+          id: "41e60090",
         },
       ],
     },
@@ -271,9 +273,12 @@ export default function KanbanBoard() {
     <div className="flex flex-row">
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCenter}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+        collisionDetection={closestCenter}
+        // modifiers={[restrictToWindowEdges]}
+        // layoutMeasuring={{ strategy: MeasuringStrategy.BeforeDragging }}
+        // autoScroll={{ layoutShiftCompensation: false }}
       >
         {items.map((item) => (
           <Column id={item.id} key={item.id} column={item} items={items} />

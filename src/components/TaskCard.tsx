@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "./ui/card";
 
-import { useSortable } from "@dnd-kit/sortable";
+import { useSortable, defaultAnimateLayoutChanges } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 import Grab from "@/assets/icon-grab.svg";
@@ -23,13 +23,21 @@ export default function TaskCard(props) {
     isDragging,
   } = useSortable({
     id: props.id,
+    animateLayoutChanges: never,
   });
 
+  function never() {
+    return false;
+  }
+
   const style = {
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Translate.toString(transform),
     transition,
-    opacity: isDragging ? 0 : 1,
   };
+
+  {
+    console.log(props.id);
+  }
 
   return (
     <Card ref={setNodeRef} style={style}>
