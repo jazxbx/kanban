@@ -11,7 +11,7 @@ export default function Sidebar({
     return setCurrentBoardIndex(i);
   }
   return (
-    <Card className="w-[300px] h-full">
+    <Card className="w-[300px] h-full bg-gray-50 dark:bg-gray-600">
       <CardHeader className="text-xl font-bold">
         <div className="flex flex-row justify-between items-center">
           <div>Your Boards</div>
