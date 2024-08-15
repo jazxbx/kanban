@@ -8,11 +8,13 @@ export default function Column({ column, data, setData }) {
     <>
       <Card className="min-w-[336px] min-h-[420px]">
         <CardHeader>
-          <CardTitle className="subpixel-antialiased">{column.name}</CardTitle>
+          <CardTitle className="subpixel-antialiased text-ellipsis">
+            {column.name}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <ScrollArea className="min-h-[280px] min-w-[280px]">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {column.tasks.map((task) => (
                 <TaskCard task={task} key={task.id} />
               ))}
