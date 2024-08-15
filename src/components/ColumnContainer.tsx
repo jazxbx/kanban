@@ -2,7 +2,6 @@ import Column from "./Column";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 export default function ColumnContainer({ data, setData, currentBoardIndex }) {
-  console.log(data[currentBoardIndex].columns);
   return (
     <ScrollArea>
       <div className="flex flex-row">
@@ -13,6 +12,7 @@ export default function ColumnContainer({ data, setData, currentBoardIndex }) {
               data={data}
               setData={setData}
               currentBoardIndex={currentBoardIndex}
+              key={col.id}
             />
           );
         })}
