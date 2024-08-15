@@ -6,7 +6,7 @@ import TaskCard from "./TaskCard";
 export default function Column({ column, data, setData }) {
   return (
     <>
-      <Card className="min-w-[336px] h-fit">
+      <Card className="min-w-[336px] h-fit shadow">
         <CardHeader>
           <CardTitle className="subpixel-antialiased text-ellipsis">
             {column.name}
