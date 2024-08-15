@@ -1,4 +1,4 @@
-const data = [
+export default const data = [
   {
     name: "programming-board",
     id: "03df9erc",
