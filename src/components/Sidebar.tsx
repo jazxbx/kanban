@@ -15,17 +15,15 @@ export default function Sidebar({
       <CardHeader className="text-xl font-bold">
         <div className="flex flex-row justify-between items-center">
           <div>Your Boards</div>
-          <div>
-            <Button variant="ghost" className="text-2xl">
-              +
-            </Button>
-          </div>
+          <Button variant="ghost" className="text-2xl">
+            +
+          </Button>
         </div>
       </CardHeader>
       <CardContent>
         {data.map((board, i) => (
           <Button
-            variant="ghost"
+            variant={currentBoardIndex === i ? "outline" : "ghost"}
             onClick={() => handleOnClick(i)}
             key={board.id}
           >
