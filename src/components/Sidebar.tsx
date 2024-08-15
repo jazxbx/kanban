@@ -12,12 +12,14 @@ export default function Sidebar({
   }
   return (
     <Card className="w-[300px] h-full">
-      <CardHeader className="text-xl font-bold flex flex-row justify-between items-center">
-        <div>Your Boards</div>
-        <div>
-          <Button variant="ghost" className="text-2xl">
-            +
-          </Button>
+      <CardHeader className="text-xl font-bold">
+        <div className="flex flex-row justify-between items-center">
+          <div>Your Boards</div>
+          <div>
+            <Button variant="ghost" className="text-2xl">
+              +
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>
