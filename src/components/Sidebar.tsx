@@ -13,7 +13,7 @@ export default function Sidebar({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  function handleOnClick(i) {
+  function handleOnClick(i: number) {
     return setCurrentBoardIndex(i);
   }
 
@@ -27,14 +27,14 @@ export default function Sidebar({
         <CardHeader className="text-xl font-bold">
           <div className="flex flex-row justify-between items-center">
             <div>Your Boards</div>
-            <Button variant="ghost" className="text-2xl">
+            <Button variant="ghost" className="text-2xl pt-0">
               +
             </Button>
           </div>
         </CardHeader>
         <div className="flex flex-col h-5/6 justify-between">
           <CardContent>
-            {data.map((board, i) => (
+            {data.map((board, i: number) => (
               <Button
                 variant={currentBoardIndex === i ? "outline" : "ghost"}
                 onClick={() => handleOnClick(i)}
@@ -63,11 +63,7 @@ export default function Sidebar({
           onClick={() => setSidebarOpen(true)}
           className="absolute bottom-[11%] z-10 rounded-r-full h-[50px] w-[50px] dark:bg-gray-600"
         >
-          <Image
-            src={showIcon}
-            alt="show sidebar"
-            className="h-[10px] w-[16px]"
-          />
+          <Image src={showIcon} alt="show sidebar" />
         </Button>
       </div>
     </>

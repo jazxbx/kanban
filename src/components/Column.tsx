@@ -8,9 +8,7 @@ export default function Column({ column, data, setData }) {
     <>
       <Card className="min-w-[336px] h-fit shadow bg-gray-50 dark:bg-gray-600">
         <CardHeader>
-          <CardTitle className="subpixel-antialiased text-ellipsis">
-            {column.name}
-          </CardTitle>
+          <CardTitle className="text-ellipsis">{column.name}</CardTitle>
         </CardHeader>
         <CardContent>
           <ScrollArea className="min-h-[88px] min-w-[280px]">
