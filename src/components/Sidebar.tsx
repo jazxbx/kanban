@@ -20,7 +20,7 @@ export default function Sidebar({
   return (
     <>
       <Card
-        className={`w-[300px] h-full bg-gray-50 dark:bg-gray-600" ${
+        className={`w-[300px] h-full bg-gray-50 dark:bg-gray-600 ${
           !sidebarOpen && "hidden"
         }`}
       >
@@ -61,7 +61,7 @@ export default function Sidebar({
       <div className={`h-full relative ${sidebarOpen && "hidden"}`}>
         <Button
           onClick={() => setSidebarOpen(true)}
-          className="absolute bottom-[11%] z-10 rounded-r-full h-[50px] w-[50px]"
+          className="absolute bottom-[11%] z-10 rounded-r-full h-[50px] w-[50px] dark:bg-gray-600"
         >
           <Image
             src={showIcon}
