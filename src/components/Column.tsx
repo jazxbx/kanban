@@ -11,7 +11,7 @@ export default function Column({ column, data, setData }) {
           <CardTitle className="text-ellipsis">{column.name}</CardTitle>
         </CardHeader>
         <CardContent>
-          <ScrollArea className="min-h-[88px] min-w-[280px]">
+          <ScrollArea className="min-h-[110px] min-w-[280px]">
             <div className="flex flex-col gap-3">
               {column.tasks.map((task) => (
                 <TaskCard task={task} key={task.id} />
