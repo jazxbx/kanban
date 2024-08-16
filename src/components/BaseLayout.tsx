@@ -4,7 +4,7 @@ import Board from "./Board";
 import Sidebar from "./Sidebar";
 import { defaultInfo } from "@/lib/data";
 
-export default function Main() {
+export default function BaseLayout() {
   const [data, setData] = useState(defaultInfo);
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
   // useEffect(() => {
