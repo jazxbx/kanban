@@ -1,4 +1,4 @@
-const data = [
+export const defaultInfo = [
   {
     name: "programming-board",
     id: "03df9erc",
@@ -52,6 +52,18 @@ const data = [
           {
             name: "ImplementErrorHandling",
             id: "2af1e579",
+          },
+          {
+            name: "SetUpLoadTesting",
+            id: "b3b05a15",
+          },
+          {
+            name: "DesignDatabaseScalingStrategy",
+            id: "b1a949fb",
+          },
+          {
+            name: "InvestigateMemoryLeak",
+            id: "41e60090",
           },
         ],
       },
@@ -119,18 +131,6 @@ const data = [
             name: "PlanFeatureYDevelopment",
             id: "b8571f19",
           },
-          {
-            name: "SetUpLoadTesting",
-            id: "b3b05a15",
-          },
-          {
-            name: "DesignDatabaseScalingStrategy",
-            id: "b1a949fb",
-          },
-          {
-            name: "InvestigateMemoryLeak",
-            id: "41e60090",
-          },
         ],
       },
     ],
@@ -140,7 +140,7 @@ const data = [
     id: "e0bf32a7",
     columns: [
       {
-        name: "todo",
+        name: "could do",
         id: "192d839c",
         tasks: [
           {
@@ -166,7 +166,7 @@ const data = [
         ],
       },
       {
-        name: "doing",
+        name: "probably doing",
         id: "9e5d38c2",
         tasks: [
           {
@@ -192,7 +192,7 @@ const data = [
         ],
       },
       {
-        name: "review",
+        name: "might do",
         id: "8d1c9e7a",
         tasks: [
           {
@@ -241,20 +241,6 @@ const data = [
             name: "PublishDesignAssets",
             id: "6e3f4a8b",
           },
-        ],
-      },
-      {
-        name: "backlog",
-        id: "98f4b1a9",
-        tasks: [
-          {
-            name: "ExploreNewDesignTrends",
-            id: "c8f2d7e5",
-          },
-          {
-            name: "ResearchUserPersonas",
-            id: "e7c9a6f3",
-          },
           {
             name: "PlanNextProject",
             id: "d4e8c7a1",
@@ -267,6 +253,20 @@ const data = [
             name: "RefineUserExperience",
             id: "c2d3f7a4",
           },
+        ],
+      },
+      {
+        name: "never doing",
+        id: "98f4b1a9",
+        tasks: [
+          {
+            name: "ExploreNewDesignTrends",
+            id: "c8f2d7e5",
+          },
+          {
+            name: "ResearchUserPersonas",
+            id: "e7c9a6f3",
+          }
         ],
       },
     ],
