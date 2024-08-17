@@ -1,5 +1,5 @@
-import Main from '@/components/Main';
+import BaseLayout from "@/components/BaseLayout";
 
 export default function Home() {
-  return <Main />;
+  return <BaseLayout />;
 }

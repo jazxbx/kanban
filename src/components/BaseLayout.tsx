@@ -4,7 +4,7 @@ import Board from "./Board";
 import Sidebar from "./Sidebar";
 import { defaultInfo } from "@/lib/data";
 
-export default function Main() {
+export default function BaseLayout() {
   const [data, setData] = useState(defaultInfo);
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
   // useEffect(() => {
@@ -13,7 +13,7 @@ export default function Main() {
   // }, []);
   return (
     <>
-      <div className="flex flex-col h-screen">
+      <div className="subpixel-antialiased select-none flex flex-col h-screen">
         {/* Header */}
         <div className="h-[100px] w-full bg-gray-200">test header</div>
 

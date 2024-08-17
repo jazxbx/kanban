@@ -24,7 +24,7 @@ export const defaultInfo = [
             id: "68854bd1",
           },
           {
-            name: "WriteUnitTestsForAPI",
+            name: "Write Unit Tests For API",
             id: "5651d51d",
           },
         ],
