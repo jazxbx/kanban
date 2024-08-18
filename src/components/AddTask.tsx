@@ -10,8 +10,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "./ui/input";
+import { createId } from "@/lib/createId";
 
-export default function AddTask({ column, data, setData, setAddingTask }) {
+export default function AddTask({
+  column,
+  data,
+  setData,
+  setAddingTask,
+  currentBoardIndex,
+}) {
   const formSchema = z.object({
     task: z
       .string()
@@ -25,7 +32,18 @@ export default function AddTask({ column, data, setData, setAddingTask }) {
     defaultValues: { task: "" },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // setAddingTask(false);
+    const { task } = values;
+    const uniqueId = createId();
+    const columnId = column.id;
+    const columnIndex = data[currentBoardIndex].columns.findIndex(
+      (col) => col.id === columnId
+    );
+    const tempColumn = { ...column };
+    const tempData = [...data];
+    tempColumn.tasks.push({ name: task, id: uniqueId });
+    tempData[currentBoardIndex].columns.splice(columnIndex, 1, tempColumn);
+    setData(tempData);
+    setAddingTask(false);
   }
   function handleCancel() {
     setAddingTask(false);

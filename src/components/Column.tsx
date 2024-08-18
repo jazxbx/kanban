@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import AddTask from "./AddTask";
 
-export default function Column({ column, data, setData }) {
+export default function Column({ column, data, setData, currentBoardIndex }) {
   const [addingTask, setAddingTask] = useState(false);
   return (
     <>
@@ -29,6 +29,7 @@ export default function Column({ column, data, setData }) {
               data={data}
               setData={setData}
               setAddingTask={setAddingTask}
+              currentBoardIndex={currentBoardIndex}
             />
           ) : (
             <Button
