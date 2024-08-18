@@ -17,8 +17,8 @@ export default function BaseLayout() {
         {/* Header */}
         <div className="h-[100px] w-full bg-gray-200">test header</div>
 
-        <div className="flex flex-1">
-          {/* Sidebar */}
+        {/* Sidebar */}
+        <div className="flex">
           <Sidebar
             data={data}
             setData={setData}
@@ -27,13 +27,11 @@ export default function BaseLayout() {
           />
 
           {/* Main Content Area */}
-          <div className="flex-1">
-            <Board
-              data={data}
-              setData={setData}
-              currentBoardIndex={currentBoardIndex}
-            />
-          </div>
+          <Board
+            data={data}
+            setData={setData}
+            currentBoardIndex={currentBoardIndex}
+          />
         </div>
       </div>
     </>
