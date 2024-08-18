@@ -22,18 +22,17 @@ export default function AddTask({ column, data, setData, setAddingTask }) {
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: { task: "" },
   });
-  function handleSubmit(event: Event) {
-    event.preventDefault();
-
-    setAddingTask(false);
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // setAddingTask(false);
   }
   function handleCancel() {
     setAddingTask(false);
   }
   return (
     <Form {...form}>
-      <form className="mt-4" onSubmit={handleSubmit}>
+      <form className="mt-4" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="task"
