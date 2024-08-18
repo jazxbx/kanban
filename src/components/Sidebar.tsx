@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 import Image from "next/image";
 import hideIcon from "@/assets/icon-hide-sidebar.svg";
 import showIcon from "@/assets/icon-show-sidebar.svg";
+import AddBoard from "./AddBoard";
 
 export default function Sidebar({
   data,
@@ -12,11 +13,11 @@ export default function Sidebar({
   setCurrentBoardIndex,
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [addingBoard, setAddingBoard] = useState(false);
 
   function handleOnClick(i: number) {
     return setCurrentBoardIndex(i);
   }
-
   return (
     <>
       <Card
@@ -27,7 +28,11 @@ export default function Sidebar({
         <CardHeader className="text-xl font-bold">
           <div className="flex flex-row justify-between items-center">
             <div>Your Boards</div>
-            <Button variant="ghost" className="text-2xl pt-0">
+            <Button
+              onClick={() => setAddingBoard(true)}
+              variant="ghost"
+              className="text-2xl pt-0"
+            >
               +
             </Button>
           </div>
@@ -39,11 +44,18 @@ export default function Sidebar({
                 variant={currentBoardIndex === i ? "outline" : "ghost"}
                 onClick={() => handleOnClick(i)}
                 key={board.id}
-                className="rounded-r-full"
+                className="rounded-r-full block"
               >
                 {board.name}
               </Button>
             ))}
+            {addingBoard && (
+              <AddBoard
+                data={data}
+                setData={setData}
+                setAddingBoard={setAddingBoard}
+              />
+            )}
           </CardContent>
           <CardFooter>
             <Button
