@@ -18,7 +18,7 @@ export default function BaseLayout() {
         <div className="h-[100px] w-full bg-gray-200">test header</div>
 
         {/* Sidebar */}
-        <div className="flex">
+        <div className="flex h-dvh">
           <Sidebar
             data={data}
             setData={setData}
