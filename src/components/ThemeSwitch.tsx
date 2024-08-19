@@ -13,10 +13,20 @@ export default function ThemeSwitch() {
   if (!mounted) return null;
 
   if (resolvedTheme === 'dark') {
-    return <CgDarkMode onClick={() => setTheme('light')} />;
+    return (
+      <CgDarkMode
+        className='text-xl md:text-3xl'
+        onClick={() => setTheme('light')}
+      />
+    );
   }
   if (resolvedTheme === 'light') {
-    return <CgDarkMode onClick={() => setTheme('dark')} />;
+    return (
+      <CgDarkMode
+        className='text-xl md:text-3xl'
+        onClick={() => setTheme('dark')}
+      />
+    );
   }
 
   return <div>ThemeSwitch</div>;
