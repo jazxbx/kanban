@@ -1,16 +1,21 @@
-import { useState } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
-import Image from "next/image";
-import hideIcon from "@/assets/icon-hide-sidebar.svg";
-import showIcon from "@/assets/icon-show-sidebar.svg";
-import AddBoard from "./AddBoard";
+import { useState } from 'react';
+import { Button } from './ui/button';
+import Image from 'next/image';
+import hideIcon from '@/assets/icon-hide-sidebar.svg';
+import showIcon from '@/assets/icon-show-sidebar.svg';
+import AddBoard from './AddBoard';
+import KanbanData from '@/lib/types';
 
 export default function Sidebar({
   data,
   setData,
   currentBoardIndex,
   setCurrentBoardIndex,
+}: {
+  data: KanbanData[];
+  setData: (data: KanbanData[]) => void;
+  currentBoardIndex: number;
+  setCurrentBoardIndex: (index: number) => void;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [addingBoard, setAddingBoard] = useState(false);
@@ -18,66 +23,72 @@ export default function Sidebar({
   function handleOnClick(i: number) {
     return setCurrentBoardIndex(i);
   }
+
+  function toggleSidebar() {
+    return setSidebarOpen((prev) => !prev);
+  }
+
   return (
-    <>
-      <Card
-        className={`w-[300px] h-full bg-gray-50 dark:bg-gray-600 ${
-          !sidebarOpen && "hidden"
-        }`}
-      >
-        <CardHeader className="text-xl font-bold">
-          <div className="flex flex-row justify-between items-center">
-            <div>Your Boards</div>
+    <div className='flex flex-col items-start bg-white dark:bg-gray-600'>
+      {sidebarOpen ? (
+        <div className='w-[300px] bg-white dark:bg-gray-600'>
+          <div className='flex justify-between items-center m-4'>
+            <h1 className='text-lg font-semibold'>Your Boards</h1>
             <Button
               onClick={() => setAddingBoard(true)}
-              variant="ghost"
-              className="text-2xl pt-0"
+              variant='ghost'
+              className='text-2xl pt-0'
             >
               +
             </Button>
           </div>
-        </CardHeader>
-        <div className="flex flex-col h-5/6 justify-between">
-          <CardContent>
+
+          <div className='pr-6'>
             {data.map((board, i: number) => (
-              <Button
-                variant={currentBoardIndex === i ? "outline" : "ghost"}
+              <div
                 onClick={() => handleOnClick(i)}
                 key={board.id}
-                className="rounded-r-full block"
+                className={`rounded-r-full block p-5 ${
+                  currentBoardIndex === i
+                    ? 'bg-indigo-800 dark:bg-gray-900 text-white'
+                    : ''
+                }`}
               >
                 {board.name}
-              </Button>
+              </div>
             ))}
             {addingBoard && (
-              <AddBoard
-                data={data}
-                setData={setData}
-                setAddingBoard={setAddingBoard}
-              />
+              <div className='ml-5'>
+                <AddBoard
+                  data={data}
+                  setData={setData}
+                  setAddingBoard={setAddingBoard}
+                />
+              </div>
             )}
-          </CardContent>
-          <CardFooter>
+          </div>
+          <div className='absolute bottom-[11%]'>
             <Button
-              variant="ghost"
-              onClick={() => setSidebarOpen(false)}
-              className="rounded-r-full"
+              variant='ghost'
+              onClick={toggleSidebar}
+              className='rounded-r-full'
             >
-              <Image src={hideIcon} alt="hide sidebar icon" />
+              <Image src={hideIcon} alt='hide sidebar icon' />
               <span>&nbsp;&nbsp;&nbsp;</span>
               <div>Hide Sidebar</div>
             </Button>
-          </CardFooter>
+          </div>
         </div>
-      </Card>
-      <div className={`h-full relative ${sidebarOpen && "hidden"}`}>
-        <Button
-          onClick={() => setSidebarOpen(true)}
-          className="absolute bottom-[11%] z-10 rounded-r-full h-[50px] w-[50px] dark:bg-gray-600"
-        >
-          <Image src={showIcon} alt="show sidebar" />
-        </Button>
-      </div>
-    </>
+      ) : (
+        <div className='absolute bottom-[11%] z-10 '>
+          <Button
+            onClick={toggleSidebar}
+            className='rounded-r-full h-[50px] w-[50px] bg-indigo-800  dark:bg-gray-700'
+          >
+            <Image src={showIcon} alt='show sidebar' />
+          </Button>
+        </div>
+      )}
+    </div>
   );
 }
