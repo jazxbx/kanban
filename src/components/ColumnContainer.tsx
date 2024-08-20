@@ -1,10 +1,10 @@
-import Column from "./Column";
-import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import { ScrollArea, ScrollBar } from '../components/ui/scroll-area';
+import Column from '@/components/Board/Column';
 
 export default function ColumnContainer({ data, setData, currentBoardIndex }) {
   return (
-    <ScrollArea>
-      <div className="flex flex-row gap-10 ml-10 mt-10">
+    <ScrollArea className='flex-1 overflow-x-auto'>
+      <div className='flex flex-row gap-10 p-10 w-full min-h-screen overflow-scroll'>
         {data[currentBoardIndex].columns.map((col) => {
           return (
             <Column
@@ -17,7 +17,7 @@ export default function ColumnContainer({ data, setData, currentBoardIndex }) {
           );
         })}
       </div>
-      <ScrollBar orientation="horizontal" />
+      <ScrollBar orientation='horizontal' className='w-full' />
     </ScrollArea>
   );
 }
