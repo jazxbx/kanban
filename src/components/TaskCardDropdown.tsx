@@ -49,7 +49,10 @@ export default function TaskCardDropdown({
           <DropdownMenuItem onClick={() => setIsEditing(true)}>
             <span>Edit</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={handleDeleteTask} className="text-red-500">
+          <DropdownMenuItem
+            onClick={handleDeleteTask}
+            className="text-red-500 focus:text-red-500"
+          >
             <span>Delete</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
