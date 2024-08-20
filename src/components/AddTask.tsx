@@ -32,7 +32,7 @@ export default function AddTask({
       .min(1, {
         message: "Task can't be blank",
       })
-      .max(30, { message: 'Please shorten the task name' }),
+      .max(40, { message: 'Please shorten the task name' }),
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
