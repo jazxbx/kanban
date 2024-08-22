@@ -67,3 +67,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* prevent scrolling on layout */
+
+html,
+body {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

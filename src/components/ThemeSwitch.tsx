@@ -15,7 +15,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === 'dark') {
     return (
       <CgDarkMode
-        className='text-xl md:text-3xl'
+        className='text-xl md:text-3xl '
         onClick={() => setTheme('light')}
       />
     );
@@ -23,7 +23,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === 'light') {
     return (
       <CgDarkMode
-        className='text-xl md:text-3xl'
+        className='text-xl md:text-3xl text-indigo-800'
         onClick={() => setTheme('dark')}
       />
     );
