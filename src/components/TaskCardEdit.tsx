@@ -10,6 +10,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import KanbanData from "@/lib/types";
 
 export default function TaskCardEdit({
   task,
@@ -18,6 +19,13 @@ export default function TaskCardEdit({
   column,
   currentBoardIndex,
   setIsEditing,
+}: {
+  task: KanbanData["columns"][0]["tasks"][0];
+  data: KanbanData[];
+  setData: (data: KanbanData[]) => void;
+  column: KanbanData["columns"][0];
+  currentBoardIndex: number;
+  setIsEditing: (value: boolean) => void;
 }) {
   const formSchema = z.object({
     taskName: z

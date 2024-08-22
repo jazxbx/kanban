@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader } from './ui/card';
 
 import { TbArrowsMove } from 'react-icons/tb';
+import { FaEllipsisVertical } from 'react-icons/fa6';
 import TaskCardDropdown from './TaskCardDropdown';
 import KanbanData from '@/lib/types';
 

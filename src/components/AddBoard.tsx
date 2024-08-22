@@ -38,7 +38,7 @@ export default function AddBoard({
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { board } = values;
     const uniqueId = createId();
-    const tempData = [...data];
+    const tempData: KanbanData[] = [...data];
     tempData.push({ name: board, id: uniqueId, columns: [] });
     setData(tempData);
     setAddingBoard(false);

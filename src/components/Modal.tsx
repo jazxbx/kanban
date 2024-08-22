@@ -1,7 +1,15 @@
 import { createPortal } from "react-dom";
 import { Card, CardContent } from "./ui/card";
 
-export default function Modal({ open, setOpen, children }) {
+export default function Modal({
+  open,
+  setOpen,
+  children,
+}: {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+  children: any;
+}) {
   if (!open) return null;
   return createPortal(
     <div

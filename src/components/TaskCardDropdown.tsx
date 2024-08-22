@@ -9,6 +9,7 @@ import { useState } from "react";
 import { FaEllipsisVertical } from "react-icons/fa6";
 import Modal from "./Modal";
 import TaskCardEdit from "./TaskCardEdit";
+import KanbanData from "@/lib/types";
 
 export default function TaskCardDropdown({
   task,
@@ -16,6 +17,12 @@ export default function TaskCardDropdown({
   setData,
   column,
   currentBoardIndex,
+}: {
+  task: KanbanData["columns"][0]["tasks"][0];
+  data: KanbanData[];
+  setData: (data: KanbanData[]) => void;
+  column: KanbanData["columns"][0];
+  currentBoardIndex: number;
 }) {
   const [isViewing, setIsViewing] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
