@@ -1,7 +1,16 @@
 import { ScrollArea, ScrollBar } from '../components/ui/scroll-area';
-import Column from '@/components/Board/Column';
+import Column from './Column';
+import KanbanData from '@/lib/types';
 
-export default function ColumnContainer({ data, setData, currentBoardIndex }) {
+export default function ColumnContainer({
+  data,
+  setData,
+  currentBoardIndex,
+}: {
+  data: KanbanData[];
+  setData: (data: KanbanData[]) => void;
+  currentBoardIndex: number;
+}) {
   return (
     <ScrollArea className='flex-1 overflow-x-auto'>
       <div className='flex flex-row gap-10 p-10 w-full min-h-screen overflow-scroll'>
