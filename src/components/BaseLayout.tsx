@@ -3,11 +3,10 @@ import { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import { defaultInfo } from '@/lib/data';
 import Header from '@/components/Header';
-import KanbanData from '@/lib/types';
 import ColumnContainer from './ColumnContainer';
 
 export default function BaseLayout() {
-  const [data, setData] = useState<KanbanData[]>(defaultInfo);
+  const [data, setData] = useState(defaultInfo);
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
   return (
     <div className='subpixel-antialiased flex flex-col bg-slate-100 dark:bg-gray-900 overflow-hidden min-h-full'>
