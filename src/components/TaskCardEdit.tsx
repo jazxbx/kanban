@@ -41,18 +41,18 @@ export default function TaskCardEdit({
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
     // prepare the task object with a new name for insertion into the array
-    const newName = values.taskName;
-    const tempTask = { ...task };
+    const newName: string = values.taskName;
+    const tempTask: KanbanData["columns"][0]["tasks"][0] = { ...task };
     tempTask.name = newName;
     // prepare a copy of 'data' for mutation
-    const tempData = [...data];
+    const tempData: KanbanData[] = [...data];
     // find the indices of the task and the column
-    const columnId = column.id;
-    const columnIndex = data[currentBoardIndex].columns.findIndex(
+    const columnId: string = column.id;
+    const columnIndex: number = data[currentBoardIndex].columns.findIndex(
       (col) => col.id === columnId
     );
-    const taskId = task.id;
-    const taskIndex = data[currentBoardIndex].columns[
+    const taskId: string = task.id;
+    const taskIndex: number = data[currentBoardIndex].columns[
       columnIndex
     ].tasks.findIndex((task) => taskId === task.id);
     // mutate the tempData array using those indices then use setData()
