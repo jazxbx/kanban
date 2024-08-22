@@ -24,7 +24,7 @@ export default function Column({
       <CardHeader>
         <CardTitle className='text-ellipsis'>{column.name}</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className='p-5 md:p-6'>
         <div className='flex flex-col gap-3'>
           {column.tasks.map((task) => (
             <TaskCard task={task} key={task.id} />
