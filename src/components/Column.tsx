@@ -27,7 +27,14 @@ export default function Column({
       <CardContent className='p-5 md:p-6'>
         <div className='flex flex-col gap-3'>
           {column.tasks.map((task) => (
-            <TaskCard task={task} key={task.id} />
+            <TaskCard
+              task={task}
+              data={data}
+              setData={setData}
+              column={column}
+              currentBoardIndex={currentBoardIndex}
+              key={task.id}
+            />
           ))}
         </div>
         {addingTask ? (

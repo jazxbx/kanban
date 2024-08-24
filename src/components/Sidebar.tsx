@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Button } from './ui/button';
-import Image from 'next/image';
-import hideIcon from '@/assets/icon-hide-sidebar.svg';
-import showIcon from '@/assets/icon-show-sidebar.svg';
-import AddBoard from './AddBoard';
-import KanbanData from '@/lib/types';
+import { useState } from "react";
+import { Button } from "./ui/button";
+import Image from "next/image";
+import hideIcon from "@/assets/icon-hide-sidebar.svg";
+import showIcon from "@/assets/icon-show-sidebar.svg";
+import AddBoard from "./AddBoard";
+import KanbanData from "@/lib/types";
 
 export default function Sidebar({
   data,
@@ -29,36 +29,36 @@ export default function Sidebar({
   }
 
   return (
-    <div className='flex flex-col items-start bg-white dark:bg-gray-600'>
+    <div className="flex flex-col items-start bg-white dark:bg-gray-600">
       {sidebarOpen ? (
-        <div className='w-[300px] bg-white dark:bg-gray-600'>
-          <div className='flex justify-between items-center m-4'>
-            <h1 className='text-lg font-semibold'>Your Boards</h1>
+        <div className="w-[300px] bg-white dark:bg-gray-600">
+          <div className="flex justify-between items-center m-4">
+            <h1 className="text-lg font-semibold">Your Boards</h1>
             <Button
               onClick={() => setAddingBoard(true)}
-              variant='ghost'
-              className='text-2xl pt-0'
+              variant="ghost"
+              className="text-2xl pt-0"
             >
               +
             </Button>
           </div>
 
-          <div className='pr-6'>
-            {data.map((board, i: number) => (
+          <div className="pr-6">
+            {data.map((board: KanbanData[][0], i: number) => (
               <div
                 onClick={() => handleOnClick(i)}
                 key={board.id}
                 className={`rounded-r-full block p-5 ${
                   currentBoardIndex === i
-                    ? 'bg-indigo-800 dark:bg-gray-900 text-white'
-                    : ''
+                    ? "bg-indigo-800 dark:bg-gray-900 text-white"
+                    : ""
                 }`}
               >
                 {board.name}
               </div>
             ))}
             {addingBoard && (
-              <div className='ml-5'>
+              <div className="ml-5">
                 <AddBoard
                   data={data}
                   setData={setData}
@@ -67,25 +67,25 @@ export default function Sidebar({
               </div>
             )}
           </div>
-          <div className='absolute bottom-[11%]'>
+          <div className="absolute bottom-[11%]">
             <Button
-              variant='ghost'
+              variant="ghost"
               onClick={toggleSidebar}
-              className='rounded-r-full'
+              className="rounded-r-full"
             >
-              <Image src={hideIcon} alt='hide sidebar icon' />
+              <Image src={hideIcon} alt="hide sidebar icon" />
               <span>&nbsp;&nbsp;&nbsp;</span>
               <div>Hide Sidebar</div>
             </Button>
           </div>
         </div>
       ) : (
-        <div className='absolute bottom-[11%] z-10 '>
+        <div className="absolute bottom-[11%] z-10 ">
           <Button
             onClick={toggleSidebar}
-            className='rounded-r-full h-[50px] w-[50px] bg-indigo-800  dark:bg-gray-700'
+            className="rounded-r-full h-[50px] w-[50px] bg-indigo-800  dark:bg-gray-700"
           >
-            <Image src={showIcon} alt='show sidebar' />
+            <Image src={showIcon} alt="show sidebar" />
           </Button>
         </div>
       )}

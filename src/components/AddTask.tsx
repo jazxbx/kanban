@@ -32,21 +32,21 @@ export default function AddTask({
       .min(1, {
         message: "Task can't be blank",
       })
-      .max(30, { message: 'Please shorten the task name' }),
+      .max(40, { message: 'Please shorten the task name' }),
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { task: '' },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { task } = values;
-    const uniqueId = createId();
-    const columnId = column.id;
-    const columnIndex = data[currentBoardIndex].columns.findIndex(
+    const task: string = values.task;
+    const uniqueId: string = createId();
+    const columnId: string = column.id;
+    const columnIndex: number = data[currentBoardIndex].columns.findIndex(
       (col) => col.id === columnId
     );
-    const tempColumn = { ...column };
-    const tempData = [...data];
+    const tempColumn: KanbanData["columns"][0] = { ...column };
+    const tempData: KanbanData[] = [...data];
     tempColumn.tasks.push({ name: task, id: uniqueId });
     tempData[currentBoardIndex].columns.splice(columnIndex, 1, tempColumn);
     setData(tempData);
