@@ -1,6 +1,6 @@
-import { ScrollArea, ScrollBar } from '../components/ui/scroll-area';
-import Column from './Column';
-import KanbanData from '@/lib/types';
+import { ScrollArea, ScrollBar } from "../components/ui/scroll-area";
+import Column from "./Column";
+import KanbanData from "@/lib/types";
 
 export default function ColumnContainer({
   data,
@@ -12,8 +12,8 @@ export default function ColumnContainer({
   currentBoardIndex: number;
 }) {
   return (
-    <ScrollArea className='flex-1 overflow-x-auto'>
-      <div className='flex flex-row gap-10 p-10 w-full min-h-screen overflow-scroll'>
+    <ScrollArea>
+      <div className="flex flex-row gap-10 pt-10 pl-5 pr-5 w-full h-screen overflow-scroll">
         {data[currentBoardIndex].columns.map((col) => {
           return (
             <Column
@@ -26,7 +26,7 @@ export default function ColumnContainer({
           );
         })}
       </div>
-      <ScrollBar orientation='horizontal' className='w-full' />
+      <ScrollBar orientation="horizontal" className="w-full" />
     </ScrollArea>
   );
 }

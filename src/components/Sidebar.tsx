@@ -29,7 +29,7 @@ export default function Sidebar({
   }
 
   return (
-    <div className="flex flex-col items-start bg-white dark:bg-gray-600">
+    <div className="relative flex flex-col items-start bg-white dark:bg-gray-600">
       {sidebarOpen ? (
         <div className="w-[300px] bg-white dark:bg-gray-600">
           <div className="flex justify-between items-center m-4">
@@ -67,7 +67,7 @@ export default function Sidebar({
               </div>
             )}
           </div>
-          <div className="absolute bottom-[11%]">
+          <div className="absolute bottom-[18%]">
             <Button
               variant="ghost"
               onClick={toggleSidebar}
@@ -80,10 +80,10 @@ export default function Sidebar({
           </div>
         </div>
       ) : (
-        <div className="absolute bottom-[11%] z-10 ">
+        <div className="h-full w-0">
           <Button
             onClick={toggleSidebar}
-            className="rounded-r-full h-[50px] w-[50px] bg-indigo-800  dark:bg-gray-700"
+            className="absolute z-50 bottom-[18%] rounded-r-full h-[50px] w-[50px] bg-indigo-800 hover:bg-indigo-700 dark:bg-gray-700"
           >
             <Image src={showIcon} alt="show sidebar" />
           </Button>
