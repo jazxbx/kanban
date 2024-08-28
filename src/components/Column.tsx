@@ -24,7 +24,7 @@ export default function Column({
       <CardHeader>
         <CardTitle className="text-ellipsis">{column.name}</CardTitle>
       </CardHeader>
-      <CardContent className="overflow-auto max-h-[calc(81vh-7rem)]">
+      <CardContent className="overflow-auto max-h-[calc(81vh-6.5rem)]">
         <div className="flex flex-col gap-3">
           {column.tasks.map((task) => (
             <TaskCard
