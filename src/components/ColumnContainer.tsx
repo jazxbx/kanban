@@ -12,8 +12,8 @@ export default function ColumnContainer({
   currentBoardIndex: number;
 }) {
   return (
-    <ScrollArea className="flex-1 overflow-x-auto">
-      <div className="flex flex-row gap-10 pt-10 pl-5 w-full min-h-screen overflow-scroll">
+    <ScrollArea>
+      <div className="flex flex-row gap-10 pt-10 pl-5 pr-5 w-full h-screen overflow-scroll">
         {data[currentBoardIndex].columns.map((col) => {
           return (
             <Column

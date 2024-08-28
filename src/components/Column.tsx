@@ -1,11 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { useState } from 'react';
-import AddTask from './AddTask';
-import { Button } from './ui/button';
+import { useState } from "react";
+import AddTask from "./AddTask";
+import { Button } from "./ui/button";
 
-import KanbanData from '@/lib/types';
-import TaskCard from './TaskCard';
+import KanbanData from "@/lib/types";
+import TaskCard from "./TaskCard";
 
 export default function Column({
   column,
@@ -13,19 +13,19 @@ export default function Column({
   setData,
   currentBoardIndex,
 }: {
-  column: KanbanData['columns'][0];
+  column: KanbanData["columns"][0];
   data: KanbanData[];
   setData: (data: KanbanData[]) => void;
   currentBoardIndex: number;
 }) {
   const [addingTask, setAddingTask] = useState(false);
   return (
-    <Card className='h-fit shadow bg-gray-50  dark:bg-gray-600 '>
+    <Card className="max-h-[85vh] h-fit shadow bg-gray-50  dark:bg-gray-600 ">
       <CardHeader>
-        <CardTitle className='text-ellipsis'>{column.name}</CardTitle>
+        <CardTitle className="text-ellipsis">{column.name}</CardTitle>
       </CardHeader>
-      <CardContent className='p-5 md:p-6'>
-        <div className='flex flex-col gap-3'>
+      <CardContent className="overflow-auto max-h-[calc(85vh-6rem)]">
+        <div className="flex flex-col gap-3">
           {column.tasks.map((task) => (
             <TaskCard
               task={task}
@@ -48,8 +48,8 @@ export default function Column({
         ) : (
           <Button
             onClick={() => setAddingTask(true)}
-            className='font-bold mt-3'
-            variant='ghost'
+            className="font-bold mt-3"
+            variant="ghost"
           >
             Add Task +
           </Button>

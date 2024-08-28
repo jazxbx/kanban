@@ -18,7 +18,7 @@ export default function BaseLayout() {
           currentBoardIndex={currentBoardIndex}
           setCurrentBoardIndex={setCurrentBoardIndex}
         />
-        <div className="flex-1 flex h-dvh overflow-hidden">
+        <div className="flex-1 overflow-hidden">
           <ColumnContainer
             data={data}
             setData={setData}
