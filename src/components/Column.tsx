@@ -20,11 +20,11 @@ export default function Column({
 }) {
   const [addingTask, setAddingTask] = useState(false);
   return (
-    <Card className="max-h-[85vh] h-fit shadow bg-gray-50  dark:bg-gray-600 ">
+    <Card className="max-h-[80vh] h-fit shadow bg-gray-50  dark:bg-gray-600 ">
       <CardHeader>
         <CardTitle className="text-ellipsis">{column.name}</CardTitle>
       </CardHeader>
-      <CardContent className="overflow-auto max-h-[calc(85vh-6rem)]">
+      <CardContent className="overflow-auto max-h-[calc(80vh-6rem)]">
         <div className="flex flex-col gap-3">
           {column.tasks.map((task) => (
             <TaskCard
