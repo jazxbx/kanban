@@ -79,3 +79,9 @@ body {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+
+@layer components {
+  .input {
+    field-sizing: content;
+  }
+}
