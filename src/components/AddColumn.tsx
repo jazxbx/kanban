@@ -58,7 +58,7 @@ export default function AddColumn({
   }
 
   return (
-    <Card className='max-h-[81vh] h-fit shadow bg-gray-50  dark:bg-gray-600 w-'>
+    <Card className='max-h-[81vh] h-fit shadow bg-gray-50  dark:bg-gray-600 min-w-[280px]'>
       <CardContent className='overflow-auto max-h-[calc(81vh-6.5rem)]'>
         <Form {...form}>
           <form className='mt-4' onSubmit={form.handleSubmit(onSubmit)}>
