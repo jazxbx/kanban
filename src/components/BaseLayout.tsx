@@ -10,7 +10,13 @@ export default function BaseLayout() {
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
   return (
     <div className="subpixel-antialiased select-none flex flex-col bg-slate-100 dark:bg-gray-900 overflow-hidden min-h-full">
-      <Header boardName={data[currentBoardIndex]?.name} />
+      <Header
+        boardName={data[currentBoardIndex]?.name}
+        data={data}
+        setData={setData}
+        currentBoardIndex={currentBoardIndex}
+        setCurrentBoardIndex={setCurrentBoardIndex}
+      />
       <div className="flex-1 flex">
         <Sidebar
           data={data}
