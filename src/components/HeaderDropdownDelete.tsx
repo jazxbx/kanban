@@ -1,3 +1,4 @@
+import KanbanData from "@/lib/types";
 import { Button } from "./ui/button";
 
 export default function HeaderDropdownDelete({
@@ -6,6 +7,12 @@ export default function HeaderDropdownDelete({
   setData,
   currentBoardIndex,
   setCurrentBoardIndex,
+}: {
+  setIsDeleting: (data: boolean) => void;
+  data: KanbanData[];
+  setData: (data: KanbanData[]) => void;
+  currentBoardIndex: number;
+  setCurrentBoardIndex: (data: number) => void;
 }) {
   function deleteBoard() {
     const dataCopy = [...data];

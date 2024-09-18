@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import { defaultInfo } from "@/lib/data";
 import Header from "@/components/Header";
 import ColumnContainer from "./ColumnContainer";
+import EmptyState from "./EmptyState";
 
 export default function BaseLayout() {
   const [data, setData] = useState(defaultInfo);
@@ -25,11 +26,15 @@ export default function BaseLayout() {
           setCurrentBoardIndex={setCurrentBoardIndex}
         />
         <div className="flex-1 overflow-hidden">
-          <ColumnContainer
-            data={data}
-            setData={setData}
-            currentBoardIndex={currentBoardIndex}
-          />
+          {data.length > 0 ? (
+            <ColumnContainer
+              data={data}
+              setData={setData}
+              currentBoardIndex={currentBoardIndex}
+            />
+          ) : (
+            <EmptyState />
+          )}
         </div>
       </div>
     </div>
