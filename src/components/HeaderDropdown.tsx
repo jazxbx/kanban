@@ -34,19 +34,27 @@ export default function HeaderDropdownr({
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>Edit Board</DropdownMenuItem>
-          <DropdownMenuItem className="text-red-500 focus:text-red-500">
+          <DropdownMenuItem
+            onClick={() => setIsDeleting(true)}
+            className="text-red-500 focus:text-red-500"
+          >
             Delete board
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       {isEditing && (
         <Modal open={isEditing} setOpen={setIsEditing}>
-          <HeaderDropdownEdit data={data} setData={setData} />
+          <HeaderDropdownEdit
+            setisEditing={setIsEditing}
+            data={data}
+            setData={setData}
+          />
         </Modal>
       )}
       {isDeleting && (
         <Modal open={isDeleting} setOpen={setIsDeleting}>
           <HeaderDropdownDelete
+            setIsDeleting={setIsDeleting}
             data={data}
             setData={setData}
             currentBoardIndex={currentBoardIndex}
